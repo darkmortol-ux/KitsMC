@@ -1,0 +1,33 @@
+name: Build y Release
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Compilar con Maven
+        run: mvn -B clean package
+
+      - name: Recrear release 'latest'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Última compilación
+          prerelease: true
+          make_latest: true
+          files: target/KitsPersonalizados.jar
