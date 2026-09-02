@@ -4,12 +4,6 @@ Plugin para Paper 1.21.11 (Java 21) que permite crear kits totalmente
 personalizables mediante un asistente por GUI de 7 pantallas, con efectos
 especiales, encantamientos hasta nivel 100 y cooldowns configurables por kit.
 
-## Instalación
-
-1. Compila con `mvn clean package` (requiere acceso al repositorio de PaperMC:
-   `https://repo.papermc.io/repository/maven-public/`).
-2. Copia `target/KitsPersonalizados.jar` a la carpeta `plugins` del servidor.
-3. Reinicia el servidor. Se generará `plugins/KitsPersonalizados/config.yml`.
 
 ## Comandos
 
