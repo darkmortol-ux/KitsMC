@@ -1,0 +1,32 @@
+name: KitsPersonalizados
+version: '1.0.0'
+main: com.darkmortol.kitspersonalizados.KitsPersonalizados
+api-version: '1.21'
+author: DARKMORTOL
+description: Sistema de kits completamente personalizables mediante GUIs.
+softdepend: [Vault]
+
+commands:
+  kit:
+    description: Reclama o entrega un kit personalizado.
+    usage: /kit <nombre> [jugador]
+  crearkit:
+    description: Abre el asistente para crear un nuevo kit.
+    usage: /crearkit <nombre>
+  listakits:
+    description: Lista todos los kits creados.
+    usage: /listakits
+  borrarkit:
+    description: Elimina un kit existente.
+    usage: /borrarkit <nombre>
+  editarkit:
+    description: Edita un kit existente reabriendo el asistente.
+    usage: /editarkit <nombre>
+
+permissions:
+  kitspersonalizados.admin:
+    description: Permite crear, editar y borrar kits.
+    default: op
+  kitspersonalizados.admin.dar:
+    description: Permite entregar kits a otros jugadores sin cooldown.
+    default: op

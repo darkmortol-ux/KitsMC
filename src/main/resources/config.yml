@@ -1,0 +1,26 @@
+# Configuración de KitsPersonalizados
+# Intervalo (en ticks) con el que se revisan los efectos personalizados. 20 ticks = 1 segundo.
+intervalo-revision-efectos: 20
+# Duración (en ticks) que se aplica cada vez que se refresca un efecto personalizado.
+duracion-efecto-aplicado: 60
+
+mensajes:
+  sin-permiso: "&cNo tienes permiso para hacer esto."
+  kit-no-existe: "&cEl kit '%kit%' no existe."
+  kit-creado: "&aEl kit '%kit%' fue creado correctamente."
+  kit-borrado: "&aEl kit '%kit%' fue eliminado."
+  kit-entregado-admin: "&aLe entregaste el kit '%kit%' a %jugador%."
+  kit-recibido-admin: "&aRecibiste el kit '%kit%' de un administrador."
+  kit-reclamado: "&aReclamaste el kit '%kit%'."
+  kit-en-cooldown: "&cDebes esperar &e%tiempo% &cpara volver a reclamar este kit."
+  kit-sin-permiso-reclamar: "&cNo tienes permiso para reclamar el kit '%kit%'."
+  jugador-no-encontrado: "&cEl jugador '%jugador%' no está conectado."
+  uso-comando-kit: "&cUso: /kit <nombre> [jugador]"
+  uso-comando-crearkit: "&cUso: /crearkit <nombre>"
+  uso-comando-editarkit: "&cUso: /editarkit <nombre>"
+  kit-ya-existe: "&cYa existe un kit con ese nombre."
+  lista-kits-titulo: "&6&lKits disponibles:"
+  no-hay-kits: "&7No hay kits creados todavía."
+  kit-comprado: "&aCompraste el kit '%kit%' por &6%precio%&a."
+  fondos-insuficientes: "&cNo tienes suficiente dinero. Te faltan &6%faltante%&c."
+  economia-no-disponible: "&cLa economía del servidor no está disponible (¿Vault y un plugin de economía instalados?)."
