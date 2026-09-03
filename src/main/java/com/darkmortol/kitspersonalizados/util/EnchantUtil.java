@@ -21,7 +21,6 @@ public class EnchantUtil {
         NOMBRES.put(Enchantment.DEPTH_STRIDER, "Agilidad acuática");
         NOMBRES.put(Enchantment.FROST_WALKER, "Paso helado");
         NOMBRES.put(Enchantment.SOUL_SPEED, "Velocidad de las almas");
-        NOMBRES.put(Enchantment.SWIM_SPEED, "Rapidez acuática");
         NOMBRES.put(Enchantment.RESPIRATION, "Respiración");
         NOMBRES.put(Enchantment.AQUA_AFFINITY, "Afinidad acuática");
         NOMBRES.put(Enchantment.SHARPNESS, "Filo");
@@ -70,7 +69,7 @@ public class EnchantUtil {
                     Enchantment.PROJECTILE_PROTECTION, Enchantment.THORNS, Enchantment.BINDING_CURSE));
             case BOTAS -> unir(List.of(Enchantment.PROTECTION, Enchantment.FIRE_PROTECTION, Enchantment.BLAST_PROTECTION,
                     Enchantment.PROJECTILE_PROTECTION, Enchantment.THORNS, Enchantment.FEATHER_FALLING,
-                    Enchantment.DEPTH_STRIDER, Enchantment.FROST_WALKER, Enchantment.SOUL_SPEED, Enchantment.SWIM_SPEED,
+                    Enchantment.DEPTH_STRIDER, Enchantment.FROST_WALKER, Enchantment.SOUL_SPEED,
                     Enchantment.BINDING_CURSE));
         };
     }
