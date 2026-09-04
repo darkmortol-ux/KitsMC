@@ -44,12 +44,20 @@ public class GUIListener implements Listener {
             if (evento.getClickedInventory() == null) return;
             if (!evento.getClickedInventory().equals(evento.getView().getTopInventory())) return;
             gui.onClick(evento);
+            return;
+        }
+        if (evento.getInventory().getHolder() instanceof KitListaGUI lista) {
+            evento.setCancelled(true);
+            if (evento.getClickedInventory() == null) return;
+            if (!evento.getClickedInventory().equals(evento.getView().getTopInventory())) return;
+            lista.onClick(evento);
         }
     }
 
     @EventHandler
     public void onDrag(InventoryDragEvent evento) {
-        if (evento.getInventory().getHolder() instanceof KitGUI) {
+        if (evento.getInventory().getHolder() instanceof KitGUI
+                || evento.getInventory().getHolder() instanceof KitListaGUI) {
             evento.setCancelled(true);
         }
     }

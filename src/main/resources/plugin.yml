@@ -8,8 +8,8 @@ softdepend: [Vault]
 
 commands:
   kit:
-    description: Reclama o entrega un kit personalizado.
-    usage: /kit <nombre> [jugador]
+    description: Reclama, compra, entrega o lista los kits personalizados.
+    usage: /kit lista | /kit <nombre> [jugador]
   crearkit:
     description: Abre el asistente para crear un nuevo kit.
     usage: /crearkit <nombre>

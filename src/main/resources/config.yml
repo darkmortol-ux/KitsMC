@@ -15,7 +15,7 @@ mensajes:
   kit-en-cooldown: "&cDebes esperar &e%tiempo% &cpara volver a reclamar este kit."
   kit-sin-permiso-reclamar: "&cNo tienes permiso para reclamar el kit '%kit%'."
   jugador-no-encontrado: "&cEl jugador '%jugador%' no está conectado."
-  uso-comando-kit: "&cUso: /kit <nombre> [jugador]"
+  uso-comando-kit: "&cUso: /kit lista &7(ver kits disponibles) &c| /kit <nombre> [jugador]"
   uso-comando-crearkit: "&cUso: /crearkit <nombre>"
   uso-comando-editarkit: "&cUso: /editarkit <nombre>"
   kit-ya-existe: "&cYa existe un kit con ese nombre."

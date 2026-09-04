@@ -4,6 +4,12 @@ Plugin para Paper 1.21.11 (Java 21) que permite crear kits totalmente
 personalizables mediante un asistente por GUI de 7 pantallas, con efectos
 especiales, encantamientos hasta nivel 100 y cooldowns configurables por kit.
 
+## Instalación
+
+1. Compila con `mvn clean package` (requiere acceso al repositorio de PaperMC:
+   `https://repo.papermc.io/repository/maven-public/`).
+2. Copia `target/KitsPersonalizados.jar` a la carpeta `plugins` del servidor.
+3. Reinicia el servidor. Se generará `plugins/KitsPersonalizados/config.yml`.
 
 ## Comandos
 
@@ -13,6 +19,7 @@ especiales, encantamientos hasta nivel 100 y cooldowns configurables por kit.
 | `/editarkit <nombre>` | Reabre el asistente sobre un kit existente. | `kitspersonalizados.admin` |
 | `/borrarkit <nombre>` | Elimina un kit. | `kitspersonalizados.admin` |
 | `/listakits` | Lista todos los kits creados. | `kitspersonalizados.admin` |
+| `/kit lista` | Muestra en un GUI únicamente los kits a los que el jugador tiene acceso (reclamo o compra); click para reclamar/comprar al instante. | Ninguno (filtra solo lo que ya puede usar) |
 | `/kit <nombre>` | El jugador reclama el kit para sí mismo (respeta permiso y cooldown). | `kit.<nombre>` o `kit.<nombre>.<horario>` |
 | `/kit <nombre> <jugador>` | Un admin entrega el kit a otro jugador, sin cooldown. | `kitspersonalizados.admin.dar` |
 

@@ -8,6 +8,7 @@ import com.darkmortol.kitspersonalizados.listener.EfectoTickTask;
 import com.darkmortol.kitspersonalizados.manager.CooldownManager;
 import com.darkmortol.kitspersonalizados.manager.CustomEffectManager;
 import com.darkmortol.kitspersonalizados.manager.EconomyManager;
+import com.darkmortol.kitspersonalizados.manager.KitClaimService;
 import com.darkmortol.kitspersonalizados.manager.KitItemFactory;
 import com.darkmortol.kitspersonalizados.manager.KitManager;
 import com.darkmortol.kitspersonalizados.util.Claves;
@@ -22,6 +23,7 @@ public final class KitsPersonalizados extends JavaPlugin {
     private KitItemFactory itemFactory;
     private MessageUtil mensajes;
     private EconomyManager economia;
+    private KitClaimService claimService;
 
     @Override
     public void onEnable() {
@@ -37,6 +39,7 @@ public final class KitsPersonalizados extends JavaPlugin {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
             getLogger().warning("Vault no está instalado: la compra de kits con economía estará desactivada.");
         }
+        this.claimService = new KitClaimService(this);
 
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
 
@@ -75,5 +78,9 @@ public final class KitsPersonalizados extends JavaPlugin {
 
     public EconomyManager getEconomia() {
         return economia;
+    }
+
+    public KitClaimService getClaimService() {
+        return claimService;
     }
 }
