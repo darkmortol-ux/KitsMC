@@ -2,6 +2,7 @@ package com.darkmortol.kitspersonalizados.command;
 
 import com.darkmortol.kitspersonalizados.KitsPersonalizados;
 import com.darkmortol.kitspersonalizados.gui.KitListaGUI;
+import com.darkmortol.kitspersonalizados.gui.KitStaffListaGUI;
 import com.darkmortol.kitspersonalizados.model.Kit;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -23,6 +24,10 @@ public class KitCommand implements CommandExecutor {
             abrirLista(sender);
             return true;
         }
+        if (args.length == 1 && args[0].equalsIgnoreCase("staff")) {
+            abrirListaStaff(sender);
+            return true;
+        }
         if (args.length == 2) {
             entregarComoAdmin(sender, args[0], args[1]);
             return true;
@@ -41,6 +46,14 @@ public class KitCommand implements CommandExecutor {
             return;
         }
         new KitListaGUI(plugin, jugador, 0).abrir();
+    }
+
+    private void abrirListaStaff(CommandSender sender) {
+        if (!(sender instanceof Player jugador)) {
+            sender.sendMessage("Este comando solo puede usarse en el juego.");
+            return;
+        }
+        new KitStaffListaGUI(plugin, jugador, 0).abrir();
     }
 
     private void entregarComoAdmin(CommandSender sender, String nombreKit, String nombreJugador) {

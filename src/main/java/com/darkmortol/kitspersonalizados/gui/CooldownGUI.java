@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import java.util.List;
 
 /**
- * Pantalla 7/8: elegir cada cuánto se puede reclamar el kit.
+ * Pantalla 8/9: elegir cada cuánto se puede reclamar el kit (solo kits NORMAL).
  */
 public class CooldownGUI extends KitGUI {
 
@@ -19,7 +19,7 @@ public class CooldownGUI extends KitGUI {
     };
 
     public CooldownGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 7/8 Cooldown", 4);
+        super(sesion, "&8Kit » 8/9 Cooldown", 4);
     }
 
     @Override
@@ -48,12 +48,12 @@ public class CooldownGUI extends KitGUI {
             return;
         }
         if (slot == SLOT_ATRAS) {
-            sesion.setPasoActual(6);
+            sesion.setPasoActual(7);
             new EfectosMenuGUI(sesion).abrir(jugador);
             return;
         }
         if (slot == SLOT_SIGUIENTE) {
-            sesion.setPasoActual(8);
+            sesion.setPasoActual(9);
             new PrecioGUI(sesion).abrir(jugador);
             return;
         }

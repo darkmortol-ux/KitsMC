@@ -8,7 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import java.util.List;
 
 /**
- * Pantalla 4/7: elegir qué comida tendrá el kit.
+ * Pantalla 5/N: elegir qué comida tendrá el kit.
  */
 public class FoodGUI extends KitGUI {
 
@@ -28,7 +28,7 @@ public class FoodGUI extends KitGUI {
     };
 
     public FoodGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 4/8 Comida", 6);
+        super(sesion, "&8Kit » 5/" + sesion.getKit().totalPasos() + " Comida", 6);
     }
 
     @Override
@@ -64,12 +64,12 @@ public class FoodGUI extends KitGUI {
             return;
         }
         if (slot == SLOT_ATRAS) {
-            sesion.setPasoActual(3);
+            sesion.setPasoActual(4);
             new PotionsGUI(sesion).abrir(jugador);
             return;
         }
         if (slot == SLOT_SIGUIENTE) {
-            sesion.setPasoActual(5);
+            sesion.setPasoActual(6);
             new EnchantSeccionesGUI(sesion).abrir(jugador);
             return;
         }

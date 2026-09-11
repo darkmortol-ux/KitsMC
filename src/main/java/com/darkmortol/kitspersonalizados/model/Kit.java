@@ -18,29 +18,32 @@ public class Kit {
 
     private String nombre;
 
-    // Pantalla 1
-    private MaterialArmadura materialArmadura = MaterialArmadura.CUERO;
+    // Pantalla 1 (nueva)
+    private VisibilidadKit visibilidad = VisibilidadKit.NORMAL;
 
     // Pantalla 2
-    private final List<KitItemArma> armasHerramientas = new ArrayList<>();
+    private MaterialArmadura materialArmadura = MaterialArmadura.CUERO;
 
     // Pantalla 3
-    private final List<PocionKit> pociones = new ArrayList<>();
+    private final List<KitItemArma> armasHerramientas = new ArrayList<>();
 
     // Pantalla 4
-    private final List<Material> comida = new ArrayList<>();
+    private final List<PocionKit> pociones = new ArrayList<>();
 
     // Pantalla 5
-    private final Map<PiezaArmadura, Map<Enchantment, Integer>> encantamientosArmadura = new LinkedHashMap<>();
+    private final List<Material> comida = new ArrayList<>();
 
     // Pantalla 6
+    private final Map<PiezaArmadura, Map<Enchantment, Integer>> encantamientosArmadura = new LinkedHashMap<>();
+
+    // Pantalla 7
     private String efectoArmaduraId; // un solo efecto para el set completo (categoría ARMADURA)
     private final List<String> efectosVariosIds = new ArrayList<>(); // ítems talismán extra (categoría VARIOS)
 
-    // Pantalla 7
+    // Pantalla 8 (solo kits NORMAL; los kits STAFF se guardan directo sin pasar por acá)
     private KitCooldownType cooldown = KitCooldownType.SIN_HORARIO;
 
-    // Pantalla 8
+    // Pantalla 9 (solo kits NORMAL)
     private double precio = 0.0; // 0 = no se puede comprar
 
     public Kit(String nombre) {
@@ -56,6 +59,23 @@ public class Kit {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public VisibilidadKit getVisibilidad() {
+        return visibilidad;
+    }
+
+    public void setVisibilidad(VisibilidadKit visibilidad) {
+        this.visibilidad = visibilidad;
+    }
+
+    public boolean esStaff() {
+        return visibilidad == VisibilidadKit.STAFF;
+    }
+
+    /** Cantidad total de pantallas del asistente: los kits STAFF se saltan cooldown y precio. */
+    public int totalPasos() {
+        return esStaff() ? 7 : 9;
     }
 
     public MaterialArmadura getMaterialArmadura() {

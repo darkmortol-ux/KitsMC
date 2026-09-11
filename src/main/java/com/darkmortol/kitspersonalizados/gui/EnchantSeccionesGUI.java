@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Pantalla 5/7: secciones para configurar los encantamientos (nivel 1-100) de
+ * Pantalla 6/N: secciones para configurar los encantamientos (nivel 1-100) de
  * cada pieza de armadura y de cada arma/herramienta del kit.
  */
 public class EnchantSeccionesGUI extends KitGUI {
@@ -20,7 +20,7 @@ public class EnchantSeccionesGUI extends KitGUI {
     private static final int[] SLOTS_ARMAS = {19, 20, 21, 22, 23, 24, 25, 28, 29};
 
     public EnchantSeccionesGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 5/8 Encantamientos", 6);
+        super(sesion, "&8Kit » 6/" + sesion.getKit().totalPasos() + " Encantamientos", 6);
     }
 
     @Override
@@ -63,12 +63,12 @@ public class EnchantSeccionesGUI extends KitGUI {
             return;
         }
         if (slot == SLOT_ATRAS) {
-            sesion.setPasoActual(4);
+            sesion.setPasoActual(5);
             new FoodGUI(sesion).abrir(jugador);
             return;
         }
         if (slot == SLOT_SIGUIENTE) {
-            sesion.setPasoActual(6);
+            sesion.setPasoActual(7);
             new EfectosMenuGUI(sesion).abrir(jugador);
             return;
         }

@@ -79,7 +79,7 @@ public abstract class KitGUI implements InventoryHolder {
 
         inventory.setItem(SLOT_INFO, new ItemBuilder(Material.PAPER)
                 .nombre("&bKit: &f" + sesion.getKit().getNombre())
-                .agregarLinea("&7Paso " + sesion.getPasoActual() + " de 8")
+                .agregarLinea("&7Paso " + sesion.getPasoActual() + " de " + sesion.getKit().totalPasos())
                 .build());
 
         if (textoSiguiente != null) {

@@ -2,6 +2,7 @@ package com.darkmortol.kitspersonalizados.command;
 
 import com.darkmortol.kitspersonalizados.KitsPersonalizados;
 import com.darkmortol.kitspersonalizados.model.Kit;
+import com.darkmortol.kitspersonalizados.model.VisibilidadKit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,9 +30,14 @@ public class KitAdminCommand implements CommandExecutor {
                 return true;
             }
             for (Kit kit : plugin.getKitManager().getKits().values()) {
-                String precio = kit.esComprable() ? ", comprable por " + plugin.getEconomia().formatear(kit.getPrecio()) : "";
-                sender.sendMessage(ChatColor.GRAY + " - " + ChatColor.WHITE + kit.getNombre()
-                        + ChatColor.GRAY + " (" + kit.getCooldown().getEtiqueta() + precio + ")");
+                if (kit.getVisibilidad() == VisibilidadKit.STAFF) {
+                    sender.sendMessage(ChatColor.GRAY + " - " + ChatColor.WHITE + kit.getNombre()
+                            + ChatColor.RED + " (Staff, kit." + kit.getNombre().toLowerCase() + ".staff)");
+                } else {
+                    String precio = kit.esComprable() ? ", comprable por " + plugin.getEconomia().formatear(kit.getPrecio()) : "";
+                    sender.sendMessage(ChatColor.GRAY + " - " + ChatColor.WHITE + kit.getNombre()
+                            + ChatColor.GRAY + " (" + kit.getCooldown().getEtiqueta() + precio + ")");
+                }
             }
             return true;
         }

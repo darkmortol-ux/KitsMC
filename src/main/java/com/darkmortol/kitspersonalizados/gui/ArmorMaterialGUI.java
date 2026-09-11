@@ -5,19 +5,18 @@ import com.darkmortol.kitspersonalizados.util.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
 /**
- * Pantalla 1/7: elegir el material de la armadura (o ninguna).
+ * Pantalla 2/N: elegir el material de la armadura (o ninguna).
  */
 public class ArmorMaterialGUI extends KitGUI {
 
     private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16};
 
     public ArmorMaterialGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 1/8 Material de armadura", 6);
+        super(sesion, "&8Kit » 2/" + sesion.getKit().totalPasos() + " Material de armadura", 6);
     }
 
     @Override
@@ -33,7 +32,7 @@ public class ArmorMaterialGUI extends KitGUI {
             if (seleccionado) builder.brillo(true);
             inventory.setItem(SLOTS[i], builder.build());
         }
-        ponerBarraNavegacion(false, "Siguiente »");
+        ponerBarraNavegacion(true, "Siguiente »");
     }
 
     @Override
@@ -45,8 +44,13 @@ public class ArmorMaterialGUI extends KitGUI {
             GUIListener.cancelarSesion(jugador);
             return;
         }
+        if (slot == SLOT_ATRAS) {
+            sesion.setPasoActual(1);
+            new VisibilidadGUI(sesion).abrir(jugador);
+            return;
+        }
         if (slot == SLOT_SIGUIENTE) {
-            sesion.setPasoActual(2);
+            sesion.setPasoActual(3);
             new WeaponsToolsGUI(sesion).abrir(jugador);
             return;
         }

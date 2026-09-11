@@ -12,7 +12,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import java.util.List;
 
 /**
- * Pantalla 6/7: menú para elegir la categoría de efecto personalizado a configurar.
+ * Pantalla 7/N: menú para elegir la categoría de efecto personalizado a configurar.
  */
 public class EfectosMenuGUI extends KitGUI {
 
@@ -22,7 +22,7 @@ public class EfectosMenuGUI extends KitGUI {
     private static final int SLOT_VARIOS = 21;
 
     public EfectosMenuGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 6/8 Efectos personalizados", 4);
+        super(sesion, "&8Kit » 7/" + sesion.getKit().totalPasos() + " Efectos personalizados", 4);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class EfectosMenuGUI extends KitGUI {
                         "&7Click para elegir"))
                 .build());
 
-        ponerBarraNavegacion(true, "Siguiente »");
+        ponerBarraNavegacion(true, kit.esStaff() ? "✔ Finalizar y guardar" : "Siguiente »");
     }
 
     @Override
@@ -75,13 +75,21 @@ public class EfectosMenuGUI extends KitGUI {
             return;
         }
         if (slot == SLOT_ATRAS) {
-            sesion.setPasoActual(5);
+            sesion.setPasoActual(6);
             new EnchantSeccionesGUI(sesion).abrir(jugador);
             return;
         }
         if (slot == SLOT_SIGUIENTE) {
-            sesion.setPasoActual(7);
-            new CooldownGUI(sesion).abrir(jugador);
+            if (kit.esStaff()) {
+                sesion.getPlugin().getKitManager().guardar(kit);
+                GUIListener.terminarSesion(jugador);
+                jugador.closeInventory();
+                jugador.sendMessage(com.darkmortol.kitspersonalizados.util.MessageUtil.colorear(
+                        "&aEl kit de staff '&f" + kit.getNombre() + "&a' fue guardado correctamente."));
+            } else {
+                sesion.setPasoActual(8);
+                new CooldownGUI(sesion).abrir(jugador);
+            }
             return;
         }
         if (slot == SLOT_ARMADURA) {

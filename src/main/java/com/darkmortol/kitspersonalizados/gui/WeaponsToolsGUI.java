@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Pantalla 2/7: elegir qué armas y herramientas tendrá el kit (y con qué material).
+ * Pantalla 3/N: elegir qué armas y herramientas tendrá el kit (y con qué material).
  */
 public class WeaponsToolsGUI extends KitGUI {
 
     private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20};
 
     public WeaponsToolsGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 2/8 Armas y herramientas", 6);
+        super(sesion, "&8Kit » 3/" + sesion.getKit().totalPasos() + " Armas y herramientas", 6);
     }
 
     @Override
@@ -55,12 +55,12 @@ public class WeaponsToolsGUI extends KitGUI {
             return;
         }
         if (slot == SLOT_ATRAS) {
-            sesion.setPasoActual(1);
+            sesion.setPasoActual(2);
             new ArmorMaterialGUI(sesion).abrir(jugador);
             return;
         }
         if (slot == SLOT_SIGUIENTE) {
-            sesion.setPasoActual(3);
+            sesion.setPasoActual(4);
             new PotionsGUI(sesion).abrir(jugador);
             return;
         }

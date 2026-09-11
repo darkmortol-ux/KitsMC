@@ -1,9 +1,9 @@
 package com.darkmortol.kitspersonalizados.command;
 
 import com.darkmortol.kitspersonalizados.KitsPersonalizados;
-import com.darkmortol.kitspersonalizados.gui.ArmorMaterialGUI;
 import com.darkmortol.kitspersonalizados.gui.GUIListener;
 import com.darkmortol.kitspersonalizados.gui.KitCreationSession;
+import com.darkmortol.kitspersonalizados.gui.VisibilidadGUI;
 import com.darkmortol.kitspersonalizados.model.Kit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -52,7 +52,7 @@ public class CrearKitCommand implements CommandExecutor {
 
         KitCreationSession sesion = new KitCreationSession(plugin, jugador, kit, editando);
         GUIListener.iniciarSesion(sesion);
-        new ArmorMaterialGUI(sesion).abrir(jugador);
+        new VisibilidadGUI(sesion).abrir(jugador);
         return true;
     }
 }

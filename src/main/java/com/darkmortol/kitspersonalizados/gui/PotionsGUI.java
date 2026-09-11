@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Pantalla 3/7: elegir qué pociones tendrá el kit.
+ * Pantalla 4/N: elegir qué pociones tendrá el kit.
  */
 public class PotionsGUI extends KitGUI {
 
@@ -35,7 +35,7 @@ public class PotionsGUI extends KitGUI {
     };
 
     public PotionsGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 3/8 Pociones", 6);
+        super(sesion, "&8Kit » 4/" + sesion.getKit().totalPasos() + " Pociones", 6);
     }
 
     @Override
@@ -83,12 +83,12 @@ public class PotionsGUI extends KitGUI {
             return;
         }
         if (slot == SLOT_ATRAS) {
-            sesion.setPasoActual(2);
+            sesion.setPasoActual(3);
             new WeaponsToolsGUI(sesion).abrir(jugador);
             return;
         }
         if (slot == SLOT_SIGUIENTE) {
-            sesion.setPasoActual(4);
+            sesion.setPasoActual(5);
             new FoodGUI(sesion).abrir(jugador);
             return;
         }

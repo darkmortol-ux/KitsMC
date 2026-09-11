@@ -5,6 +5,7 @@ import com.darkmortol.kitspersonalizados.model.KitCooldownType;
 import com.darkmortol.kitspersonalizados.model.KitItemArma;
 import com.darkmortol.kitspersonalizados.model.MaterialArmadura;
 import com.darkmortol.kitspersonalizados.model.TipoArmaHerramienta;
+import com.darkmortol.kitspersonalizados.model.VisibilidadKit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -59,6 +60,7 @@ public class KitManager {
         String nombre = yml.getString("nombre");
         if (nombre == null) return null;
         Kit kit = new Kit(nombre);
+        kit.setVisibilidad(VisibilidadKit.valueOf(yml.getString("visibilidad", "NORMAL")));
 
         kit.setMaterialArmadura(MaterialArmadura.valueOf(yml.getString("material-armadura", "CUERO")));
 
@@ -122,6 +124,7 @@ public class KitManager {
         kits.put(kit.getNombre().toLowerCase(Locale.ROOT), kit);
         YamlConfiguration yml = new YamlConfiguration();
         yml.set("nombre", kit.getNombre());
+        yml.set("visibilidad", kit.getVisibilidad().name());
         yml.set("material-armadura", kit.getMaterialArmadura().name());
         yml.set("efecto-armadura", kit.getEfectoArmaduraId());
         yml.set("efectos-varios", kit.getEfectosVariosIds());
@@ -186,17 +189,24 @@ public class KitManager {
         sb.append("# ================================================================\n");
         sb.append("# Permisos de este kit — cárgalos en tu gestor de permisos/rangos\n");
         sb.append("# ================================================================\n");
-        if (kit.getCooldown() == KitCooldownType.SIN_HORARIO) {
-            sb.append("# Reclamo (sin horario): kit.").append(nombre).append("\n");
+        if (kit.esStaff()) {
+            sb.append("# Kit de STAFF — reclamo directo, sin cooldown ni precio.\n");
+            sb.append("# Permiso: kit.").append(nombre).append(".staff\n");
+            sb.append("# Se ve/reclama con: /kit staff\n");
         } else {
-            sb.append("# Reclamo (").append(kit.getCooldown().getEtiqueta()).append("): kit.")
-                    .append(nombre).append(".").append(kit.getCooldown().getSufijoPermiso()).append("\n");
-        }
-        if (kit.esComprable()) {
-            sb.append("# Compra (precio $").append(String.format(java.util.Locale.US, "%,.2f", kit.getPrecio()))
-                    .append("): kit.").append(nombre).append(".buy\n");
-        } else {
-            sb.append("# Compra: no disponible (precio en $0)\n");
+            if (kit.getCooldown() == KitCooldownType.SIN_HORARIO) {
+                sb.append("# Reclamo (sin horario): kit.").append(nombre).append("\n");
+            } else {
+                sb.append("# Reclamo (").append(kit.getCooldown().getEtiqueta()).append("): kit.")
+                        .append(nombre).append(".").append(kit.getCooldown().getSufijoPermiso()).append("\n");
+            }
+            if (kit.esComprable()) {
+                sb.append("# Compra (precio $").append(String.format(java.util.Locale.US, "%,.2f", kit.getPrecio()))
+                        .append("): kit.").append(nombre).append(".buy\n");
+            } else {
+                sb.append("# Compra: no disponible (precio en $0)\n");
+            }
+            sb.append("# Se ve/reclama con: /kit lista\n");
         }
         sb.append("# Entrega por admin (sin cooldown, cualquier kit): kitspersonalizados.admin.dar\n");
         sb.append("# ================================================================\n");

@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import java.util.List;
 
 /**
- * Pantalla 8/8: define el precio en la economía del servidor (Vault) para
+ * Pantalla 9/9: define el precio en la economía del servidor (Vault) para
  * poder comprar el kit con /kit &lt;nombre&gt;. $0 = no se puede comprar.
  * Permiso de compra: kit.&lt;nombre&gt;.buy
  */
@@ -24,7 +24,7 @@ public class PrecioGUI extends KitGUI {
     private static final int SLOT_MAS_500 = 16;
 
     public PrecioGUI(KitCreationSession sesion) {
-        super(sesion, "&8Kit » 8/8 Precio (economía)", 4);
+        super(sesion, "&8Kit » 9/9 Precio (economía)", 4);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class PrecioGUI extends KitGUI {
             return;
         }
         if (slot == SLOT_ATRAS) {
-            sesion.setPasoActual(7);
+            sesion.setPasoActual(8);
             new CooldownGUI(sesion).abrir(jugador);
             return;
         }
