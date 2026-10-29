@@ -25,7 +25,7 @@ import java.util.List;
  * Al hacer click sobre un kit disponible, se intenta reclamar/comprar al
  * instante (misma lógica que /kit &lt;nombre&gt;).
  */
-public class KitListaGUI implements InventoryHolder {
+public class KitListaGUI implements InventoryHolder, ClickeableGUI {
 
     private static final int ITEMS_POR_PAGINA = 45;
     private static final int SLOT_ANTERIOR = 45;

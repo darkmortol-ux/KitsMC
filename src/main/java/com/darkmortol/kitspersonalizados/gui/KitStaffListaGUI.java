@@ -24,7 +24,7 @@ import java.util.List;
  * los que el jugador tiene el permiso kit.&lt;nombre&gt;.staff (o es admin).
  * Se reclaman directo al hacer click, sin cooldown ni economía de por medio.
  */
-public class KitStaffListaGUI implements InventoryHolder {
+public class KitStaffListaGUI implements InventoryHolder, ClickeableGUI {
 
     private static final int ITEMS_POR_PAGINA = 45;
     private static final int SLOT_ANTERIOR = 45;

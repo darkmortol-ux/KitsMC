@@ -1,8 +1,6 @@
 package com.darkmortol.kitspersonalizados;
 
-import com.darkmortol.kitspersonalizados.command.CrearKitCommand;
-import com.darkmortol.kitspersonalizados.command.KitAdminCommand;
-import com.darkmortol.kitspersonalizados.command.KitCommand;
+import com.darkmortol.kitspersonalizados.command.KitSpCommand;
 import com.darkmortol.kitspersonalizados.gui.GUIListener;
 import com.darkmortol.kitspersonalizados.listener.EfectoTickTask;
 import com.darkmortol.kitspersonalizados.manager.CooldownManager;
@@ -43,11 +41,7 @@ public final class KitsPersonalizados extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new GUIListener(), this);
 
-        getCommand("crearkit").setExecutor(new CrearKitCommand(this));
-        getCommand("editarkit").setExecutor(new CrearKitCommand(this));
-        getCommand("borrarkit").setExecutor(new KitAdminCommand(this));
-        getCommand("listakits").setExecutor(new KitAdminCommand(this));
-        getCommand("kit").setExecutor(new KitCommand(this));
+        getCommand("kitsp").setExecutor(new KitSpCommand(this));
 
         int intervalo = getConfig().getInt("intervalo-revision-efectos", 20);
         int duracion = getConfig().getInt("duracion-efecto-aplicado", 60);

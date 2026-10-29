@@ -7,25 +7,17 @@ description: Sistema de kits completamente personalizables mediante GUIs.
 softdepend: [Vault]
 
 commands:
-  kit:
-    description: Reclama, compra, entrega o lista los kits personalizados.
-    usage: /kit lista | /kit staff | /kit <nombre> [jugador]
-  crearkit:
-    description: Abre el asistente para crear un nuevo kit.
-    usage: /crearkit <nombre>
-  listakits:
-    description: Lista todos los kits creados.
-    usage: /listakits
-  borrarkit:
-    description: Elimina un kit existente.
-    usage: /borrarkit <nombre>
-  editarkit:
-    description: Edita un kit existente reabriendo el asistente.
-    usage: /editarkit <nombre>
+  kitsp:
+    description: Comando general del plugin — todas las funciones tienen su propia pantalla visual.
+    usage: |
+      /kitsp (abre el menú) | /kitsp crear [nombre] | /kitsp editar [nombre] |
+      /kitsp borrar [nombre] | /kitsp listar | /kitsp dar [nombre] [jugador] |
+      /kitsp lista | /kitsp staff | /kitsp <nombre> [jugador]
+    aliases: [kits]
 
 permissions:
   kitspersonalizados.admin:
-    description: Permite crear, editar y borrar kits.
+    description: Permite crear, editar, borrar y listar (vista admin) los kits.
     default: op
   kitspersonalizados.admin.dar:
     description: Permite entregar kits a otros jugadores sin cooldown.
